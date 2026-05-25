@@ -1030,24 +1030,15 @@
       </div>
 
       <div class="video-player" id="video-player">
-        <img src="assets/result.jpg" alt="Video" />
-        <div class="video-label">AI Animated · 5s</div>
-        <div class="video-overlay">
-          <div class="play-btn" id="play-btn" onclick="togglePlay()">
-            <div class="play-icon"></div>
-          </div>
-        </div>
-        <div class="video-timeline">
-          <div class="timeline-bar">
-            <div class="timeline-fill" id="timeline-fill"></div>
-          </div>
-          <span class="video-time" id="video-time">0:00</span>
-          <span class="video-dur">/ 0:05</span>
-        </div>
+        <div class="video-label">AI Animated</div>
+        <video id="result-video" src="assets/result-animated.mp4"
+               controls playsinline
+               style="width:100%;display:block;border-radius:12px;"></video>
       </div>
 
       <div class="modal-actions" id="modal-actions" style="display:none;">
-        <button class="btn" style="background:#6366f1;color:white;" onclick="mockDownload()">↓ &nbsp; Download Video</button>
+        <a class="btn" style="background:#6366f1;color:white;text-decoration:none;"
+           href="assets/result-animated.mp4" download="keter-ai-animated.mp4">↓ &nbsp; Download Video</a>
         <button class="btn btn-ghost" onclick="closeModalDirect()">Close</button>
       </div>
 
@@ -1230,24 +1221,21 @@
   }
 
   /* ── ANIMATE MODAL ── */
-  let videoInterval = null, videoSec = 0, isPlaying = false;
-
   function openAnimate() {
-    document.getElementById('animate-modal').classList.add('show');
+    const modal = document.getElementById('animate-modal');
+    modal.classList.add('show');
     document.getElementById('animate-loading').classList.add('show');
     document.getElementById('video-player').classList.remove('show');
     document.getElementById('modal-actions').style.display = 'none';
     document.getElementById('animate-fill').style.width = '0%';
-    videoSec = 0; isPlaying = false;
-    document.getElementById('timeline-fill').style.width = '0%';
-    document.getElementById('video-time').textContent = '0:00';
+    document.getElementById('result-video').pause();
 
     const stages = [
-      { pct:20,  label:'Analyzing keyframes...',  delay:500  },
+      { pct:20,  label:'Analyzing keyframes...',   delay:500  },
       { pct:45,  label:'Generating motion flow...', delay:1200 },
-      { pct:70,  label:'Rendering frames...',      delay:2200 },
-      { pct:90,  label:'Encoding video...',        delay:3300 },
-      { pct:100, label:'Ready!',                   delay:4200 },
+      { pct:70,  label:'Rendering frames...',       delay:2200 },
+      { pct:90,  label:'Encoding video...',         delay:3300 },
+      { pct:100, label:'Ready!',                    delay:4200 },
     ];
 
     stages.forEach(({ pct, label, delay }) => {
@@ -1261,27 +1249,8 @@
       document.getElementById('animate-loading').classList.remove('show');
       document.getElementById('video-player').classList.add('show');
       document.getElementById('modal-actions').style.display = 'flex';
+      document.getElementById('result-video').play();
     }, 4800);
-  }
-
-  function togglePlay() {
-    const btn = document.getElementById('play-btn');
-    if (!isPlaying) {
-      isPlaying = true;
-      btn.innerHTML = '<div class="pause-icon"><span></span><span></span></div>';
-      videoInterval = setInterval(() => {
-        videoSec += 0.1;
-        if (videoSec >= 5) {
-          videoSec = 0; clearInterval(videoInterval); isPlaying = false;
-          btn.innerHTML = '<div class="play-icon"></div>';
-        }
-        document.getElementById('timeline-fill').style.width = (videoSec / 5 * 100) + '%';
-        document.getElementById('video-time').textContent = '0:0' + Math.floor(videoSec);
-      }, 100);
-    } else {
-      isPlaying = false; clearInterval(videoInterval);
-      btn.innerHTML = '<div class="play-icon"></div>';
-    }
   }
 
   function closeModal(e) {
@@ -1290,7 +1259,7 @@
 
   function closeModalDirect() {
     document.getElementById('animate-modal').classList.remove('show');
-    clearInterval(videoInterval); isPlaying = false;
+    document.getElementById('result-video').pause();
   }
 </script>
 </body>
