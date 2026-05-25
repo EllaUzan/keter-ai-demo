@@ -506,13 +506,24 @@
       aspect-ratio: 16/9;
     }
 
-    .result-image-wrap img {
+    .result-bg {
       position: absolute;
       inset: 0;
       width: 100%; height: 100%;
       object-fit: cover;
-      transform-origin: 62% 98%;
-      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      display: block;
+    }
+
+    .model-overlay {
+      position: absolute;
+      bottom: 10%;
+      left: 36%;
+      width: 27%;
+      display: none;
+      mix-blend-mode: multiply;
+      transform-origin: bottom center;
+      transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
     }
 
     /* SCALE CONTROL */
@@ -966,12 +977,13 @@
 
         <div class="result-area" id="result-area">
           <div class="result-image-wrap">
-            <img src="assets/result.jpg" alt="Generated" id="result-img" />
+            <img src="assets/result.jpg" class="result-bg" alt="Generated scene" />
+            <img src="" class="model-overlay" id="model-overlay" alt="Model layer" />
             <div class="result-badge">✦ AI Generated</div>
           </div>
 
           <!-- SCALE CONTROL -->
-          <div class="scale-control">
+          <div class="scale-control" id="scale-control" style="display:none;">
             <div class="scale-label">Model Scale</div>
             <button class="scale-btn" onclick="stepScale(-5)">−</button>
             <input type="range" class="scale-slider" id="scale-slider"
@@ -985,6 +997,7 @@
           <div class="result-actions">
             <button class="btn btn-download" onclick="mockDownload()">↓ &nbsp; Download</button>
             <button class="btn btn-animate" onclick="openAnimate()">▶ &nbsp; Animate</button>
+            <button class="btn btn-ghost" id="scale-toggle-btn" onclick="toggleScaleMode()">↕ &nbsp; Scale Model</button>
             <button class="btn btn-ghost" onclick="regenerate()">↺ &nbsp; Regenerate</button>
           </div>
         </div>
@@ -1127,6 +1140,7 @@
         <div class="summary-name">Uploaded image</div>
       </div>
     `;
+    document.getElementById('model-overlay').src = modelImages[state.model];
     document.getElementById('result-area').classList.remove('show');
     document.getElementById('loading-area').classList.remove('show');
     document.getElementById('generate-btn-area').style.display = 'block';
@@ -1179,24 +1193,34 @@
     resetScale();
   }
 
-  /* ── SCALE ── */
+  /* ── SCALE (model overlay only) ── */
   function applyScale(val) {
     val = Math.min(140, Math.max(60, parseInt(val)));
-    const img = document.getElementById('result-img');
-    const slider = document.getElementById('scale-slider');
-    img.style.transform = `scale(${val / 100})`;
+    document.getElementById('model-overlay').style.transform = `scale(${val / 100})`;
     document.getElementById('scale-pct').textContent = val + '%';
+    const slider = document.getElementById('scale-slider');
     slider.value = val;
     const pct = ((val - 60) / 80) * 100;
     slider.style.background = `linear-gradient(to right, var(--accent) 0%, var(--accent) ${pct}%, rgba(0,0,0,0.12) ${pct}%)`;
   }
 
   function stepScale(delta) {
-    const current = parseInt(document.getElementById('scale-slider').value);
-    applyScale(current + delta);
+    applyScale(parseInt(document.getElementById('scale-slider').value) + delta);
   }
 
   function resetScale() { applyScale(100); }
+
+  function toggleScaleMode() {
+    const overlay = document.getElementById('model-overlay');
+    const control = document.getElementById('scale-control');
+    const btn = document.getElementById('scale-toggle-btn');
+    const isOpen = overlay.style.display === 'block';
+    overlay.style.display = isOpen ? 'none' : 'block';
+    control.style.display = isOpen ? 'none' : 'flex';
+    btn.style.borderColor = isOpen ? '' : 'var(--accent)';
+    btn.style.color = isOpen ? '' : 'var(--accent)';
+    if (!isOpen) resetScale();
+  }
 
   function mockDownload() {
     const a = document.createElement('a');
