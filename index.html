@@ -43,9 +43,7 @@
       text-transform: uppercase;
     }
 
-    .logo span {
-      color: var(--accent);
-    }
+    .logo span { color: var(--accent); }
 
     .header-tag {
       font-size: 11px;
@@ -69,10 +67,7 @@
       margin-bottom: 12px;
     }
 
-    .hero h1 strong {
-      font-weight: 700;
-      color: var(--accent);
-    }
+    .hero h1 strong { font-weight: 700; color: var(--accent); }
 
     .hero p {
       font-size: 15px;
@@ -80,7 +75,7 @@
       letter-spacing: 1px;
     }
 
-    /* MAIN LAYOUT */
+    /* MAIN */
     .studio {
       max-width: 1100px;
       margin: -30px auto 60px;
@@ -94,7 +89,7 @@
       overflow: hidden;
     }
 
-    /* STEPS */
+    /* STEPS BAR */
     .steps-bar {
       background: var(--black);
       padding: 20px 36px;
@@ -126,15 +121,8 @@
       transition: all var(--transition);
     }
 
-    .step-indicator.active .step-num {
-      background: var(--accent);
-      border-color: var(--accent);
-    }
-
-    .step-indicator.done .step-num {
-      background: #4ade80;
-      border-color: #4ade80;
-    }
+    .step-indicator.active .step-num { background: var(--accent); border-color: var(--accent); }
+    .step-indicator.done .step-num { background: #4ade80; border-color: #4ade80; }
 
     .step-label {
       font-size: 12px;
@@ -149,7 +137,7 @@
       background: rgba(255,255,255,0.1);
     }
 
-    /* CONTENT AREA */
+    /* CONTENT */
     .content {
       padding: 40px 36px;
       min-height: 420px;
@@ -171,7 +159,6 @@
     }
 
     .selection-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
-    .selection-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
 
     .select-card {
       border: 2px solid transparent;
@@ -202,7 +189,6 @@
 
     .select-card.model-card img { height: 260px; object-fit: cover; object-position: top; }
     .select-card.location-card img { height: 180px; object-fit: cover; }
-    .select-card.product-card img { height: 200px; object-fit: contain; padding: 16px; background: #f8f8f6; }
 
     .card-label {
       padding: 12px 16px;
@@ -210,12 +196,6 @@
       font-weight: 500;
       color: var(--dark);
       letter-spacing: 0.5px;
-    }
-
-    .card-sub {
-      font-size: 11px;
-      color: var(--mid);
-      margin-top: 2px;
     }
 
     .check-badge {
@@ -232,7 +212,133 @@
 
     .select-card.selected .check-badge { display: flex; }
 
-    /* FOOTER NAV */
+    /* UPLOAD BOX */
+    .upload-zone {
+      border: 2px dashed rgba(0,0,0,0.15);
+      border-radius: 16px;
+      padding: 60px 40px;
+      text-align: center;
+      cursor: pointer;
+      transition: all var(--transition);
+      background: var(--light);
+      position: relative;
+    }
+
+    .upload-zone:hover, .upload-zone.drag-over {
+      border-color: var(--accent);
+      background: rgba(200,169,110,0.05);
+    }
+
+    .upload-zone.has-file {
+      border-style: solid;
+      border-color: var(--accent);
+      padding: 0;
+      overflow: hidden;
+      background: var(--black);
+    }
+
+    .upload-icon {
+      font-size: 40px;
+      margin-bottom: 16px;
+      opacity: 0.4;
+    }
+
+    .upload-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+
+    .upload-sub {
+      font-size: 13px;
+      color: var(--mid);
+      margin-bottom: 24px;
+    }
+
+    .upload-btn {
+      display: inline-block;
+      padding: 12px 28px;
+      background: var(--black);
+      color: white;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .upload-btn:hover { background: var(--dark); transform: translateY(-1px); }
+
+    .upload-formats {
+      margin-top: 16px;
+      font-size: 11px;
+      color: rgba(0,0,0,0.3);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    #file-input { display: none; }
+
+    .preview-wrap {
+      display: none;
+      position: relative;
+    }
+
+    .upload-zone.has-file .preview-wrap { display: block; }
+    .upload-zone.has-file .upload-empty { display: none; }
+
+    .preview-img {
+      width: 100%;
+      max-height: 360px;
+      object-fit: contain;
+      display: block;
+      background: #f0ede8;
+    }
+
+    .preview-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--transition);
+      opacity: 0;
+    }
+
+    .upload-zone.has-file:hover .preview-overlay {
+      background: rgba(0,0,0,0.4);
+      opacity: 1;
+    }
+
+    .change-btn {
+      padding: 10px 24px;
+      background: white;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--black);
+      cursor: pointer;
+    }
+
+    .preview-badge {
+      position: absolute;
+      top: 12px; left: 12px;
+      background: var(--accent);
+      color: white;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 20px;
+    }
+
+    /* NAV FOOTER */
     .nav-footer {
       padding: 24px 36px;
       border-top: 1px solid rgba(0,0,0,0.06);
@@ -253,10 +359,7 @@
       transition: all var(--transition);
     }
 
-    .btn-primary {
-      background: var(--black);
-      color: var(--white);
-    }
+    .btn-primary { background: var(--black); color: var(--white); }
 
     .btn-primary:hover:not(:disabled) {
       background: var(--dark);
@@ -264,10 +367,7 @@
       box-shadow: 0 6px 20px rgba(0,0,0,0.25);
     }
 
-    .btn-primary:disabled {
-      opacity: 0.3;
-      cursor: not-allowed;
-    }
+    .btn-primary:disabled { opacity: 0.3; cursor: not-allowed; }
 
     .btn-ghost {
       background: transparent;
@@ -275,10 +375,7 @@
       border: 1px solid rgba(0,0,0,0.15);
     }
 
-    .btn-ghost:hover {
-      border-color: var(--black);
-      color: var(--black);
-    }
+    .btn-ghost:hover { border-color: var(--black); color: var(--black); }
 
     .btn-generate {
       background: linear-gradient(135deg, var(--accent), #b8935a);
@@ -296,9 +393,7 @@
     .btn-generate:disabled { opacity: 0.35; cursor: not-allowed; }
 
     /* GENERATE PANEL */
-    .generate-panel {
-      padding: 40px 36px;
-    }
+    .generate-panel { padding: 40px 36px; }
 
     .selections-summary {
       display: flex;
@@ -319,9 +414,9 @@
       object-fit: cover;
     }
 
-    .summary-item.model-sum img { height: 180px; object-position: top; }
-    .summary-item.loc-sum img { height: 120px; }
-    .summary-item.prod-sum img { height: 120px; object-fit: contain; padding: 12px; }
+    .summary-item.model-sum img { height: 200px; object-position: top; }
+    .summary-item.loc-sum img { height: 200px; }
+    .summary-item.prod-sum img { height: 200px; object-fit: contain; background: #f0ede8; }
 
     .summary-label {
       padding: 10px 14px;
@@ -339,10 +434,7 @@
       color: var(--dark);
     }
 
-    .generate-center {
-      text-align: center;
-      margin-top: 16px;
-    }
+    .generate-center { text-align: center; margin-top: 16px; }
 
     /* LOADING */
     .loading-overlay {
@@ -403,10 +495,7 @@
     .load-step.done { color: var(--accent); }
 
     /* RESULT */
-    .result-area {
-      display: none;
-    }
-
+    .result-area { display: none; }
     .result-area.show { display: block; }
 
     .result-image-wrap {
@@ -416,10 +505,7 @@
       box-shadow: 0 20px 60px rgba(0,0,0,0.15);
     }
 
-    .result-image-wrap img {
-      width: 100%;
-      display: block;
-    }
+    .result-image-wrap img { width: 100%; display: block; }
 
     .result-badge {
       position: absolute;
@@ -441,32 +527,9 @@
       justify-content: center;
     }
 
-    .btn-download {
-      background: var(--black);
-      color: white;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .btn-animate {
-      background: linear-gradient(135deg, #6366f1, #8b5cf6);
-      color: white;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .btn-animate:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(99,102,241,0.4);
-    }
-
-    .btn-regenerate {
-      background: transparent;
-      border: 1px solid rgba(0,0,0,0.15);
-      color: var(--dark);
-    }
+    .btn-download { background: var(--black); color: white; }
+    .btn-animate { background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; }
+    .btn-animate:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(99,102,241,0.4); }
 
     /* ANIMATE MODAL */
     .modal-overlay {
@@ -527,17 +590,9 @@
 
     .modal-close:hover { background: rgba(255,255,255,0.2); }
 
-    .modal-body {
-      padding: 32px 28px;
-    }
+    .modal-body { padding: 32px 28px; }
 
-    /* Animate loading */
-    .animate-loading {
-      display: none;
-      text-align: center;
-      padding: 20px 0 10px;
-    }
-
+    .animate-loading { display: none; text-align: center; padding: 20px 0 10px; }
     .animate-loading.show { display: block; }
 
     .animate-progress {
@@ -564,30 +619,17 @@
       text-transform: uppercase;
     }
 
-    /* Video player mock */
-    .video-player {
-      display: none;
-      position: relative;
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
+    .video-player { display: none; position: relative; border-radius: 12px; overflow: hidden; }
     .video-player.show { display: block; }
 
-    .video-player img {
-      width: 100%;
-      display: block;
-      filter: brightness(0.85);
-    }
+    .video-player img { width: 100%; display: block; filter: brightness(0.85); }
 
     .video-overlay {
       position: absolute;
       inset: 0;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 12px;
     }
 
     .play-btn {
@@ -603,12 +645,21 @@
     .play-btn:hover { transform: scale(1.1); background: white; }
 
     .play-icon {
-      width: 0;
-      height: 0;
+      width: 0; height: 0;
       border-style: solid;
       border-width: 10px 0 10px 20px;
       border-color: transparent transparent transparent var(--black);
       margin-left: 4px;
+    }
+
+    .pause-icon {
+      display: flex; gap: 5px;
+    }
+
+    .pause-icon span {
+      width: 4px; height: 20px;
+      background: var(--black);
+      border-radius: 2px;
     }
 
     .video-timeline {
@@ -622,57 +673,42 @@
     }
 
     .timeline-bar {
-      flex: 1;
-      height: 3px;
+      flex: 1; height: 3px;
       background: rgba(255,255,255,0.3);
       border-radius: 2px;
-      position: relative;
-      cursor: pointer;
     }
 
     .timeline-fill {
-      position: absolute;
-      left: 0; top: 0; bottom: 0;
+      height: 100%;
       width: 0%;
       background: white;
       border-radius: 2px;
+      transition: width 0.1s linear;
     }
 
-    .video-time {
-      font-size: 11px;
-      color: rgba(255,255,255,0.8);
-      letter-spacing: 0.5px;
-    }
-
+    .video-time { font-size: 11px; color: rgba(255,255,255,0.8); }
     .video-dur { font-size: 11px; color: rgba(255,255,255,0.5); }
 
     .video-label {
       position: absolute;
       top: 12px; left: 12px;
-      background: rgba(99,102,241,0.8);
+      background: rgba(99,102,241,0.85);
       color: white;
       font-size: 10px;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       padding: 4px 12px;
       border-radius: 20px;
-      backdrop-filter: blur(8px);
     }
 
-    .modal-actions {
-      display: flex;
-      gap: 10px;
-      margin-top: 20px;
-    }
+    .modal-actions { display: flex; gap: 10px; margin-top: 20px; }
 
     /* SCREENS */
     .screen { display: none; }
     .screen.active { display: block; }
 
-    /* Responsive */
     @media (max-width: 640px) {
       .selection-grid.cols-3 { grid-template-columns: 1fr; }
-      .selection-grid.cols-2 { grid-template-columns: 1fr; }
       .selections-summary { flex-direction: column; }
       header { padding: 16px 20px; }
       .content, .generate-panel { padding: 28px 20px; }
@@ -690,7 +726,7 @@
 
 <div class="hero">
   <h1>Create your <strong>perfect campaign image</strong></h1>
-  <p>Select a model, product, and location — your AI-generated visual is ready in seconds</p>
+  <p>Select a model, location, and upload your product — your AI-generated visual is ready in seconds</p>
 </div>
 
 <div class="studio">
@@ -705,12 +741,12 @@
       <div class="step-divider"></div>
       <div class="step-indicator" id="si-2">
         <div class="step-num">2</div>
-        <div class="step-label">Product</div>
+        <div class="step-label">Location</div>
       </div>
       <div class="step-divider"></div>
       <div class="step-indicator" id="si-3">
         <div class="step-num">3</div>
-        <div class="step-label">Location</div>
+        <div class="step-label">Product</div>
       </div>
       <div class="step-divider"></div>
       <div class="step-indicator" id="si-4">
@@ -723,18 +759,18 @@
     <div class="screen active" id="screen-1">
       <div class="content">
         <div class="section-title">Choose your model</div>
-        <div class="selection-grid cols-3" id="model-grid">
-          <div class="select-card model-card" data-val="Sofia" onclick="selectCard(this, 'model')">
+        <div class="selection-grid cols-3">
+          <div class="select-card model-card" data-val="Sofia" onclick="selectCard(this,'model')">
             <div class="check-badge">✓</div>
             <img src="assets/model-woman1.png" alt="Sofia" />
             <div class="card-label">Sofia</div>
           </div>
-          <div class="select-card model-card" data-val="James" onclick="selectCard(this, 'model')">
+          <div class="select-card model-card" data-val="James" onclick="selectCard(this,'model')">
             <div class="check-badge">✓</div>
             <img src="assets/model-man.png" alt="James" />
             <div class="card-label">James</div>
           </div>
-          <div class="select-card model-card" data-val="Emma" onclick="selectCard(this, 'model')">
+          <div class="select-card model-card" data-val="Emma" onclick="selectCard(this,'model')">
             <div class="check-badge">✓</div>
             <img src="assets/model-woman2.png" alt="Emma" />
             <div class="card-label">Emma</div>
@@ -747,24 +783,25 @@
       </div>
     </div>
 
-    <!-- SCREEN 2: PRODUCT -->
+    <!-- SCREEN 2: LOCATION -->
     <div class="screen" id="screen-2">
       <div class="content">
-        <div class="section-title">Choose your product</div>
-        <div class="selection-grid cols-2" id="product-grid">
-          <div class="select-card product-card" data-val="Brushwood Box 454L" onclick="selectCard(this, 'product')">
+        <div class="section-title">Choose your location</div>
+        <div class="selection-grid cols-3">
+          <div class="select-card location-card" data-val="Mediterranean Terrace" onclick="selectCard(this,'location')">
             <div class="check-badge">✓</div>
-            <img src="assets/product.png" alt="Brushwood Box" />
-            <div class="card-label">Brushwood Box 454L
-              <div class="card-sub">Outdoor Storage · Dark Brown / Graphite</div>
-            </div>
+            <img src="assets/location-terrace.png" alt="Terrace" />
+            <div class="card-label">Mediterranean Terrace</div>
           </div>
-          <div class="select-card product-card" data-val="Brushwood Box 454L (Light)" onclick="selectCard(this, 'product')">
+          <div class="select-card location-card" data-val="Stone Garden Estate" onclick="selectCard(this,'location')">
             <div class="check-badge">✓</div>
-            <img src="assets/product-scene.jpg" alt="Brushwood Box Scene" />
-            <div class="card-label">Brushwood Box — Scene Preview
-              <div class="card-sub">See it in a natural environment</div>
-            </div>
+            <img src="assets/location-stone.png" alt="Stone" />
+            <div class="card-label">Stone Garden Estate</div>
+          </div>
+          <div class="select-card location-card" data-val="Modern Courtyard" onclick="selectCard(this,'location')">
+            <div class="check-badge">✓</div>
+            <img src="assets/location-modern.png" alt="Modern" />
+            <div class="card-label">Modern Courtyard</div>
           </div>
         </div>
       </div>
@@ -774,27 +811,35 @@
       </div>
     </div>
 
-    <!-- SCREEN 3: LOCATION -->
+    <!-- SCREEN 3: UPLOAD PRODUCT -->
     <div class="screen" id="screen-3">
       <div class="content">
-        <div class="section-title">Choose your location</div>
-        <div class="selection-grid cols-3" id="location-grid">
-          <div class="select-card location-card" data-val="Mediterranean Terrace" onclick="selectCard(this, 'location')">
-            <div class="check-badge">✓</div>
-            <img src="assets/location-terrace.png" alt="Terrace" />
-            <div class="card-label">Mediterranean Terrace</div>
+        <div class="section-title">Upload your product</div>
+
+        <div class="upload-zone" id="upload-zone"
+             ondragover="dragOver(event)"
+             ondragleave="dragLeave(event)"
+             ondrop="dropFile(event)"
+             onclick="triggerUpload()">
+
+          <div class="upload-empty">
+            <div class="upload-icon">↑</div>
+            <div class="upload-title">Drop your product image here</div>
+            <div class="upload-sub">or click to browse your files</div>
+            <div class="upload-btn">Choose File</div>
+            <div class="upload-formats">PNG · JPG · WEBP · up to 20MB</div>
           </div>
-          <div class="select-card location-card" data-val="Stone Garden Estate" onclick="selectCard(this, 'location')">
-            <div class="check-badge">✓</div>
-            <img src="assets/location-stone.png" alt="Stone" />
-            <div class="card-label">Stone Garden Estate</div>
-          </div>
-          <div class="select-card location-card" data-val="Modern Courtyard" onclick="selectCard(this, 'location')">
-            <div class="check-badge">✓</div>
-            <img src="assets/location-modern.png" alt="Modern" />
-            <div class="card-label">Modern Courtyard</div>
+
+          <div class="preview-wrap">
+            <div class="preview-badge">✓ Product Uploaded</div>
+            <img class="preview-img" id="preview-img" src="" alt="Product preview" />
+            <div class="preview-overlay">
+              <div class="change-btn">↑ Change Image</div>
+            </div>
           </div>
         </div>
+
+        <input type="file" id="file-input" accept="image/*" onchange="handleFile(this.files[0])" />
       </div>
       <div class="nav-footer">
         <button class="btn btn-ghost" onclick="goTo(2)">← Back</button>
@@ -807,18 +852,12 @@
       <div class="generate-panel">
         <div class="section-title">Your selection</div>
 
-        <div class="selections-summary" id="summary-display">
-          <!-- filled by JS -->
-        </div>
+        <div class="selections-summary" id="summary-display"></div>
 
-        <!-- GENERATE BUTTON -->
         <div class="generate-center" id="generate-btn-area">
-          <button class="btn btn-generate" onclick="startGenerate()">
-            ✦ &nbsp; Generate Image
-          </button>
+          <button class="btn btn-generate" onclick="startGenerate()">✦ &nbsp; Generate Image</button>
         </div>
 
-        <!-- LOADING -->
         <div class="loading-overlay" id="loading-area">
           <div class="loading-text">Generating your image...</div>
           <div class="progress-bar-wrap">
@@ -833,28 +872,27 @@
           </div>
         </div>
 
-        <!-- RESULT -->
         <div class="result-area" id="result-area">
           <div class="result-image-wrap">
-            <img src="assets/result.jpg" alt="Generated" id="result-img" />
+            <img src="assets/result.jpg" alt="Generated" />
             <div class="result-badge">✦ AI Generated</div>
           </div>
           <div class="result-actions">
             <button class="btn btn-download" onclick="mockDownload()">↓ &nbsp; Download</button>
             <button class="btn btn-animate" onclick="openAnimate()">▶ &nbsp; Animate</button>
-            <button class="btn btn-regenerate btn-ghost" onclick="regenerate()">↺ &nbsp; Regenerate</button>
+            <button class="btn btn-ghost" onclick="regenerate()">↺ &nbsp; Regenerate</button>
           </div>
         </div>
       </div>
 
-      <div class="nav-footer" id="screen4-footer">
-        <button class="btn btn-ghost" onclick="goTo(3)" id="back-4">← Back</button>
+      <div class="nav-footer">
+        <button class="btn btn-ghost" id="back-4" onclick="goTo(3)">← Back</button>
         <div></div>
       </div>
     </div>
 
-  </div><!-- studio-card -->
-</div><!-- studio -->
+  </div>
+</div>
 
 <!-- ANIMATE MODAL -->
 <div class="modal-overlay" id="animate-modal" onclick="closeModal(event)">
@@ -866,7 +904,7 @@
     <div class="modal-body">
 
       <div class="animate-loading show" id="animate-loading">
-        <div class="loading-text" style="font-size:12px; color: #6366f1;">Generating video animation...</div>
+        <div class="loading-text" style="font-size:12px;color:#6366f1;">Generating video animation...</div>
         <div class="animate-progress">
           <div class="animate-fill" id="animate-fill"></div>
         </div>
@@ -877,8 +915,8 @@
         <img src="assets/result.jpg" alt="Video" />
         <div class="video-label">AI Animated · 5s</div>
         <div class="video-overlay">
-          <div class="play-btn" onclick="togglePlay(this)">
-            <div class="play-icon" id="play-icon"></div>
+          <div class="play-btn" id="play-btn" onclick="togglePlay()">
+            <div class="play-icon"></div>
           </div>
         </div>
         <div class="video-timeline">
@@ -891,7 +929,7 @@
       </div>
 
       <div class="modal-actions" id="modal-actions" style="display:none;">
-        <button class="btn btn-download btn-primary" style="background: #6366f1;" onclick="mockDownload()">↓ &nbsp; Download Video</button>
+        <button class="btn" style="background:#6366f1;color:white;" onclick="mockDownload()">↓ &nbsp; Download Video</button>
         <button class="btn btn-ghost" onclick="closeModalDirect()">Close</button>
       </div>
 
@@ -900,87 +938,115 @@
 </div>
 
 <script>
-  const state = { model: null, product: null, location: null };
+  const state = { model: null, location: null, productDataUrl: null };
+
   const modelImages = {
     'Sofia': 'assets/model-woman1.png',
     'James': 'assets/model-man.png',
-    'Emma': 'assets/model-woman2.png',
+    'Emma':  'assets/model-woman2.png',
   };
+
   const locationImages = {
     'Mediterranean Terrace': 'assets/location-terrace.png',
-    'Stone Garden Estate': 'assets/location-stone.png',
-    'Modern Courtyard': 'assets/location-modern.png',
+    'Stone Garden Estate':   'assets/location-stone.png',
+    'Modern Courtyard':      'assets/location-modern.png',
   };
 
   function selectCard(el, type) {
-    const grid = el.parentElement;
-    grid.querySelectorAll('.select-card').forEach(c => c.classList.remove('selected'));
+    el.parentElement.querySelectorAll('.select-card').forEach(c => c.classList.remove('selected'));
     el.classList.add('selected');
     state[type] = el.dataset.val;
-
-    if (type === 'model') document.getElementById('next-1').disabled = false;
-    if (type === 'product') document.getElementById('next-2').disabled = false;
-    if (type === 'location') document.getElementById('next-3').disabled = false;
+    if (type === 'model')    document.getElementById('next-1').disabled = false;
+    if (type === 'location') document.getElementById('next-2').disabled = false;
   }
 
   function goTo(n) {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById('screen-' + n).classList.add('active');
-
     document.querySelectorAll('.step-indicator').forEach((si, i) => {
       si.classList.remove('active', 'done');
       if (i + 1 < n) si.classList.add('done');
       if (i + 1 === n) si.classList.add('active');
     });
-
     if (n === 4) buildSummary();
   }
 
+  /* ── UPLOAD ── */
+  function triggerUpload() { document.getElementById('file-input').click(); }
+
+  function dragOver(e) {
+    e.preventDefault();
+    document.getElementById('upload-zone').classList.add('drag-over');
+  }
+
+  function dragLeave(e) {
+    document.getElementById('upload-zone').classList.remove('drag-over');
+  }
+
+  function dropFile(e) {
+    e.preventDefault();
+    dragLeave(e);
+    const file = e.dataTransfer.files[0];
+    if (file && file.type.startsWith('image/')) handleFile(file);
+  }
+
+  function handleFile(file) {
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      state.productDataUrl = e.target.result;
+      document.getElementById('preview-img').src = e.target.result;
+      document.getElementById('upload-zone').classList.add('has-file');
+      document.getElementById('next-3').disabled = false;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  /* ── SUMMARY ── */
   function buildSummary() {
     const el = document.getElementById('summary-display');
     el.innerHTML = `
       <div class="summary-item model-sum">
-        <img src="${modelImages[state.model]}" alt="${state.model}" style="object-fit:cover;height:200px;object-position:top;" />
+        <img src="${modelImages[state.model]}" style="object-position:top;" />
         <div class="summary-label">Model</div>
         <div class="summary-name">${state.model}</div>
       </div>
-      <div class="summary-item prod-sum">
-        <img src="assets/product.png" alt="Product" />
-        <div class="summary-label">Product</div>
-        <div class="summary-name">${state.product}</div>
-      </div>
       <div class="summary-item loc-sum">
-        <img src="${locationImages[state.location] || 'assets/location-terrace.png'}" alt="${state.location}" style="height:200px;object-fit:cover;" />
+        <img src="${locationImages[state.location]}" />
         <div class="summary-label">Location</div>
         <div class="summary-name">${state.location}</div>
+      </div>
+      <div class="summary-item prod-sum">
+        <img src="${state.productDataUrl}" />
+        <div class="summary-label">Product</div>
+        <div class="summary-name">Uploaded image</div>
       </div>
     `;
     document.getElementById('result-area').classList.remove('show');
     document.getElementById('loading-area').classList.remove('show');
     document.getElementById('generate-btn-area').style.display = 'block';
     document.getElementById('back-4').style.display = '';
-    document.querySelectorAll('.load-step').forEach(s => { s.classList.remove('active','done'); });
+    document.querySelectorAll('.load-step').forEach(s => s.classList.remove('active','done'));
+    setProgress(0);
   }
 
+  /* ── GENERATE ── */
   function startGenerate() {
     document.getElementById('generate-btn-area').style.display = 'none';
     document.getElementById('back-4').style.display = 'none';
     document.getElementById('loading-area').classList.add('show');
 
     const steps = [
-      { id: 'ls-1', pct: 25, delay: 600 },
-      { id: 'ls-2', pct: 55, delay: 1400 },
-      { id: 'ls-3', pct: 80, delay: 2400 },
-      { id: 'ls-4', pct: 100, delay: 3400 },
+      { id:'ls-1', pct:25,  delay:600  },
+      { id:'ls-2', pct:55,  delay:1400 },
+      { id:'ls-3', pct:80,  delay:2400 },
+      { id:'ls-4', pct:100, delay:3400 },
     ];
 
     let prev = null;
     steps.forEach(({ id, pct, delay }) => {
       setTimeout(() => {
-        if (prev) {
-          document.getElementById(prev).classList.remove('active');
-          document.getElementById(prev).classList.add('done');
-        }
+        if (prev) { document.getElementById(prev).classList.replace('active','done'); }
         document.getElementById(id).classList.add('active');
         setProgress(pct);
         prev = id;
@@ -988,11 +1054,9 @@
     });
 
     setTimeout(() => {
-      document.getElementById('ls-4').classList.remove('active');
-      document.getElementById('ls-4').classList.add('done');
+      document.getElementById('ls-4').classList.replace('active','done');
       document.getElementById('loading-area').classList.remove('show');
       document.getElementById('result-area').classList.add('show');
-      document.getElementById('back-4').style.display = 'none';
     }, 4600);
   }
 
@@ -1016,9 +1080,8 @@
     a.click();
   }
 
-  let videoInterval = null;
-  let videoSec = 0;
-  let isPlaying = false;
+  /* ── ANIMATE MODAL ── */
+  let videoInterval = null, videoSec = 0, isPlaying = false;
 
   function openAnimate() {
     document.getElementById('animate-modal').classList.add('show');
@@ -1026,17 +1089,16 @@
     document.getElementById('video-player').classList.remove('show');
     document.getElementById('modal-actions').style.display = 'none';
     document.getElementById('animate-fill').style.width = '0%';
-    videoSec = 0;
-    isPlaying = false;
+    videoSec = 0; isPlaying = false;
     document.getElementById('timeline-fill').style.width = '0%';
     document.getElementById('video-time').textContent = '0:00';
 
     const stages = [
-      { pct: 20, label: 'Analyzing keyframes...', delay: 500 },
-      { pct: 45, label: 'Generating motion flow...', delay: 1200 },
-      { pct: 70, label: 'Rendering frames...', delay: 2200 },
-      { pct: 90, label: 'Encoding video...', delay: 3300 },
-      { pct: 100, label: 'Ready!', delay: 4200 },
+      { pct:20,  label:'Analyzing keyframes...',  delay:500  },
+      { pct:45,  label:'Generating motion flow...', delay:1200 },
+      { pct:70,  label:'Rendering frames...',      delay:2200 },
+      { pct:90,  label:'Encoding video...',        delay:3300 },
+      { pct:100, label:'Ready!',                   delay:4200 },
     ];
 
     stages.forEach(({ pct, label, delay }) => {
@@ -1053,27 +1115,23 @@
     }, 4800);
   }
 
-  function togglePlay(btn) {
+  function togglePlay() {
+    const btn = document.getElementById('play-btn');
     if (!isPlaying) {
       isPlaying = true;
-      btn.innerHTML = '<div style="width:14px;height:14px;background:var(--black);"></div>';
+      btn.innerHTML = '<div class="pause-icon"><span></span><span></span></div>';
       videoInterval = setInterval(() => {
         videoSec += 0.1;
         if (videoSec >= 5) {
-          videoSec = 0;
-          clearInterval(videoInterval);
-          isPlaying = false;
-          btn.innerHTML = '<div class="play-icon" id="play-icon"></div>';
+          videoSec = 0; clearInterval(videoInterval); isPlaying = false;
+          btn.innerHTML = '<div class="play-icon"></div>';
         }
-        const pct = (videoSec / 5) * 100;
-        document.getElementById('timeline-fill').style.width = pct + '%';
-        const s = Math.floor(videoSec);
-        document.getElementById('video-time').textContent = '0:0' + s;
+        document.getElementById('timeline-fill').style.width = (videoSec / 5 * 100) + '%';
+        document.getElementById('video-time').textContent = '0:0' + Math.floor(videoSec);
       }, 100);
     } else {
-      isPlaying = false;
-      clearInterval(videoInterval);
-      btn.innerHTML = '<div class="play-icon" id="play-icon"></div>';
+      isPlaying = false; clearInterval(videoInterval);
+      btn.innerHTML = '<div class="play-icon"></div>';
     }
   }
 
@@ -1083,8 +1141,7 @@
 
   function closeModalDirect() {
     document.getElementById('animate-modal').classList.remove('show');
-    clearInterval(videoInterval);
-    isPlaying = false;
+    clearInterval(videoInterval); isPlaying = false;
   }
 </script>
 </body>
