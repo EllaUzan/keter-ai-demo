@@ -829,7 +829,7 @@
 
 <div class="hero">
   <h1>Create your <strong>perfect campaign image</strong></h1>
-  <p>Select a model, location, and upload your product — your AI-generated visual is ready in seconds</p>
+  <p>Upload your product, select a model and location — your AI-generated visual is ready in seconds</p>
 </div>
 
 <div class="studio">
@@ -839,17 +839,17 @@
     <div class="steps-bar">
       <div class="step-indicator active" id="si-1">
         <div class="step-num">1</div>
-        <div class="step-label">Model</div>
+        <div class="step-label">Product</div>
       </div>
       <div class="step-divider"></div>
       <div class="step-indicator" id="si-2">
         <div class="step-num">2</div>
-        <div class="step-label">Location</div>
+        <div class="step-label">Model</div>
       </div>
       <div class="step-divider"></div>
       <div class="step-indicator" id="si-3">
         <div class="step-num">3</div>
-        <div class="step-label">Product</div>
+        <div class="step-label">Location</div>
       </div>
       <div class="step-divider"></div>
       <div class="step-indicator" id="si-4">
@@ -858,64 +858,8 @@
       </div>
     </div>
 
-    <!-- SCREEN 1: MODEL -->
+    <!-- SCREEN 1: UPLOAD PRODUCT -->
     <div class="screen active" id="screen-1">
-      <div class="content">
-        <div class="section-title">Choose your model</div>
-        <div class="selection-grid cols-3">
-          <div class="select-card model-card" data-val="Sofia" onclick="selectCard(this,'model')">
-            <div class="check-badge">✓</div>
-            <img src="assets/model-woman1.png" alt="Sofia" />
-            <div class="card-label">Sofia</div>
-          </div>
-          <div class="select-card model-card" data-val="James" onclick="selectCard(this,'model')">
-            <div class="check-badge">✓</div>
-            <img src="assets/model-man.png" alt="James" />
-            <div class="card-label">James</div>
-          </div>
-          <div class="select-card model-card" data-val="Emma" onclick="selectCard(this,'model')">
-            <div class="check-badge">✓</div>
-            <img src="assets/model-woman2.png" alt="Emma" />
-            <div class="card-label">Emma</div>
-          </div>
-        </div>
-      </div>
-      <div class="nav-footer">
-        <div></div>
-        <button class="btn btn-primary" id="next-1" disabled onclick="goTo(2)">Next →</button>
-      </div>
-    </div>
-
-    <!-- SCREEN 2: LOCATION -->
-    <div class="screen" id="screen-2">
-      <div class="content">
-        <div class="section-title">Choose your location</div>
-        <div class="selection-grid cols-3">
-          <div class="select-card location-card" data-val="Mediterranean Terrace" onclick="selectCard(this,'location')">
-            <div class="check-badge">✓</div>
-            <img src="assets/location-terrace.png" alt="Terrace" />
-            <div class="card-label">Mediterranean Terrace</div>
-          </div>
-          <div class="select-card location-card" data-val="Stone Garden Estate" onclick="selectCard(this,'location')">
-            <div class="check-badge">✓</div>
-            <img src="assets/location-stone.png" alt="Stone" />
-            <div class="card-label">Stone Garden Estate</div>
-          </div>
-          <div class="select-card location-card" data-val="Modern Courtyard" onclick="selectCard(this,'location')">
-            <div class="check-badge">✓</div>
-            <img src="assets/location-modern.png" alt="Modern" />
-            <div class="card-label">Modern Courtyard</div>
-          </div>
-        </div>
-      </div>
-      <div class="nav-footer">
-        <button class="btn btn-ghost" onclick="goTo(1)">← Back</button>
-        <button class="btn btn-primary" id="next-2" disabled onclick="goTo(3)">Next →</button>
-      </div>
-    </div>
-
-    <!-- SCREEN 3: UPLOAD PRODUCT -->
-    <div class="screen" id="screen-3">
       <div class="content">
         <div class="section-title">Upload your product</div>
 
@@ -943,6 +887,62 @@
         </div>
 
         <input type="file" id="file-input" accept="image/*" onchange="handleFile(this.files[0])" />
+      </div>
+      <div class="nav-footer">
+        <div></div>
+        <button class="btn btn-primary" id="next-1" disabled onclick="goTo(2)">Next →</button>
+      </div>
+    </div>
+
+    <!-- SCREEN 2: MODEL -->
+    <div class="screen" id="screen-2">
+      <div class="content">
+        <div class="section-title">Choose your model</div>
+        <div class="selection-grid cols-3">
+          <div class="select-card model-card" data-val="Sofia" onclick="selectCard(this,'model')">
+            <div class="check-badge">✓</div>
+            <img src="assets/model-woman1.png" alt="Sofia" />
+            <div class="card-label">Sofia</div>
+          </div>
+          <div class="select-card model-card" data-val="James" onclick="selectCard(this,'model')">
+            <div class="check-badge">✓</div>
+            <img src="assets/model-man.png" alt="James" />
+            <div class="card-label">James</div>
+          </div>
+          <div class="select-card model-card" data-val="Emma" onclick="selectCard(this,'model')">
+            <div class="check-badge">✓</div>
+            <img src="assets/model-woman2.png" alt="Emma" />
+            <div class="card-label">Emma</div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-footer">
+        <button class="btn btn-ghost" onclick="goTo(1)">← Back</button>
+        <button class="btn btn-primary" id="next-2" disabled onclick="goTo(3)">Next →</button>
+      </div>
+    </div>
+
+    <!-- SCREEN 3: LOCATION -->
+    <div class="screen" id="screen-3">
+      <div class="content">
+        <div class="section-title">Choose your location</div>
+        <div class="selection-grid cols-3">
+          <div class="select-card location-card" data-val="Mediterranean Terrace" onclick="selectCard(this,'location')">
+            <div class="check-badge">✓</div>
+            <img src="assets/location-terrace.png" alt="Terrace" />
+            <div class="card-label">Mediterranean Terrace</div>
+          </div>
+          <div class="select-card location-card" data-val="Stone Garden Estate" onclick="selectCard(this,'location')">
+            <div class="check-badge">✓</div>
+            <img src="assets/location-stone.png" alt="Stone" />
+            <div class="card-label">Stone Garden Estate</div>
+          </div>
+          <div class="select-card location-card" data-val="Modern Courtyard" onclick="selectCard(this,'location')">
+            <div class="check-badge">✓</div>
+            <img src="assets/location-modern.png" alt="Modern" />
+            <div class="card-label">Modern Courtyard</div>
+          </div>
+        </div>
       </div>
       <div class="nav-footer">
         <button class="btn btn-ghost" onclick="goTo(2)">← Back</button>
@@ -1065,8 +1065,8 @@
     el.parentElement.querySelectorAll('.select-card').forEach(c => c.classList.remove('selected'));
     el.classList.add('selected');
     state[type] = el.dataset.val;
-    if (type === 'model')    document.getElementById('next-1').disabled = false;
-    if (type === 'location') document.getElementById('next-2').disabled = false;
+    if (type === 'model')    document.getElementById('next-2').disabled = false;
+    if (type === 'location') document.getElementById('next-3').disabled = false;
   }
 
   function goTo(n) {
@@ -1106,7 +1106,7 @@
       state.productDataUrl = e.target.result;
       document.getElementById('preview-img').src = e.target.result;
       document.getElementById('upload-zone').classList.add('has-file');
-      document.getElementById('next-3').disabled = false;
+      document.getElementById('next-1').disabled = false;
     };
     reader.readAsDataURL(file);
   }
